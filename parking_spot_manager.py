@@ -1,14 +1,46 @@
 class parking_spot:
-    # you have to implement 'constructor(ìƒì„±ì)' and 'get' method
+    def __init__(self,name,ptype,city,district,latitude,longitude):
+    #ÀÚ¿ø¸íºÎÅÍ À§µµ±îÁöÀÇ µ¥ÀÌÅÍ¸¦ ¹Ş¾Æ µñ¼Å³Ê¸®¿¡ ÀúÀå
+        self.__item={
+            'name': name,
+            'ptype': ptype,
+            'city':city,
+            'district':district,
+            'latitude':float(latitude),
+            'longitude':float(longitude)
+        } #À§µµ¿Í °æµµ´Â ½Ç¼ö ÀÌ¹Ç·Î cast ¿¬»êÀÚ·Î ÀÚ·áÇü º¯È¯
+    
+    def get(self, keyword='name'):
+    #Å°¿öµå µû¶ó¼­ value¸®ÅÏÇÏ´Â ÇÔ¼ö
+        return self.__item[keyword]
+    
     def __str__(self):
         item = self.__item
         s  = f"[{item['name']}({item['ptype']})] "
         s += f"{item['city']} {item['district']}"
         s += f"(lat:{item['latitude']}, long:{item['longitude']})"
         return s
+    
+def str_list_to_class_list(str_list): 
+# parking_spot Å¬·¡½º °´Ã¼ÀÇ ¸®½ºÆ®·Î º¯È¯ ÈÄ ¹İÈ¯ÇÏ´Â ÇÔ¼ö
+    result = []
+    for string in str_list:
+            data = string.split(',') #ÄŞ¸¶ ±âÁØÀ¸·Î ºĞ¸®
+            data = data[1:7] #¹øÈ£ Á¦¿Ü
+            obj = parking_spot(*data) #°´Ã¼ »ı¼º
+            result.append(obj)
+    return result
+
+def print_spots(spots):
+#¸®½ºÆ®ÀÇ ±æÀÌ¸¦ Ãâ·ÂÇÑ µÚ ¸®½ºÆ®¿¡ ÀúÀåµÈ ¸ğµç °´Ã¼ÀÇ °ªÀ» Ãâ·ÂÇÏ´Â ÇÔ¼ö
+    print(f'"---print elements({len(spots)})---"')
+
+    for spot in spots:
+        print_string = spot.__str__() #¹®ÀÚ¿­ ¾ò±â
+        print(print_string)
 
 
-# ê° ë‹¨ê³„ë³„ë¡œ í…ŒìŠ¤íŠ¸ (í…ŒìŠ¤íŠ¸í• ë•Œ ì£¼ì„í•´ì œ í›„ ì‚¬ìš©)
+
 if __name__ == '__main__':
     print("Testing the module...")
     # version#2
@@ -18,7 +50,7 @@ if __name__ == '__main__':
     # print_spots(spots)
 
     # version#3
-    # spots = filter_by_district(spots, 'ë™ì‘')
+    # spots = filter_by_district(spots, '?™?‘')
     # print_spots(spots)
     
     # version#4

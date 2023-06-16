@@ -1,6 +1,6 @@
 # %%
 """
-íŒŒì¼ê³¼ ê´€ë ¨ëœ í•¨ìˆ˜ë¥¼ êµ¬í˜„í•´ë†“ì€ ëª¨ë“ˆ
+?ŒŒ?¼ê³? ê´?? ¨?œ ?•¨?ˆ˜ë¥? êµ¬í˜„?•´?†“??? ëª¨ë“ˆ
 """
 
 import chardet
@@ -9,62 +9,62 @@ import sys
 
 def print_listdir(path='./', depth=0):
     """
-    path ê²½ë¡œë¶€í„° ì¡´ì¬í•˜ëŠ” ëª¨ë“  í•˜ìœ„ í´ë”/íŒŒì¼ì˜ ëª©ë¡ì„ ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜
+    path ê²½ë¡œë¶??„° ì¡´ì¬?•˜?Š” ëª¨ë“  ?•˜?œ„ ?´?”/?ŒŒ?¼?˜ ëª©ë¡?„ ì¶œë ¥?•˜?Š” ?•¨?ˆ˜
     Args:
-        path  (string): ì¶œë ¥í•˜ê³ ì í•˜ëŠ” ê²½ë¡œì˜ ì‹œì‘ ìœ„ì¹˜
-        depth (int)   : íŒŒì¼ì˜ ë‹¨ê³„ (ì‚¬ìš©ì‹œ 0ìœ¼ë¡œ ê³ ì •)
+        path  (string): ì¶œë ¥?•˜ê³ ì ?•˜?Š” ê²½ë¡œ?˜ ?‹œ?‘ ?œ„ì¹?
+        depth (int)   : ?ŒŒ?¼?˜ ?‹¨ê³? (?‚¬?š©?‹œ 0?œ¼ë¡? ê³ ì •)
     Examples:
-        >>> print_listdir('../') # ìƒìœ„ í´ë”ë¶€í„° ì¡´ì¬í•˜ëŠ” ëª¨ë“  í´ë”/íŒŒì¼ì˜ ëª©ë¡ì„ ì¶œë ¥
+        >>> print_listdir('../') # ?ƒ?œ„ ?´?”ë¶??„° ì¡´ì¬?•˜?Š” ëª¨ë“  ?´?”/?ŒŒ?¼?˜ ëª©ë¡?„ ì¶œë ¥
     """
-    # ì‹œì‘ì˜ depthëŠ” 0ìœ¼ë¡œ ê³ ì •
+    # ?‹œ?‘?˜ depth?Š” 0?œ¼ë¡? ê³ ì •
     if sys._getframe(1).f_code.co_name != 'print_listdir': depth=0
 
-    # íŒŒì¼ì˜ ëª©ë¡
+    # ?ŒŒ?¼?˜ ëª©ë¡
     dirs = os.listdir(path)
     for d in dirs:
-        # depthê°€ 1ì´ìƒì¼ ê²½ìš° depthë§Œí¼ ë“¤ì—¬ì“°ê¸°
+        # depthê°? 1?´?ƒ?¼ ê²½ìš° depthë§Œí¼ ?“¤?—¬?“°ê¸?
         if depth > 0 :
             for _ in range(depth):
                 print('  ', end='')
             print('|-', end='')
         print(f'[{d}]')
         d = path + '/' + d
-        # í´ë”ì¼ ê²½ìš° ì¬ê·€í˜¸ì¶œë¡œ í•˜ìœ„ ëª©ë¡ ì¶œë ¥
+        # ?´?”?¼ ê²½ìš° ?¬ê·??˜¸ì¶œë¡œ ?•˜?œ„ ëª©ë¡ ì¶œë ¥
         if os.path.isdir(d):
             print_listdir(d, depth+1)
 
 def read_file(path):
     """
-    íŒŒì¼ì˜ ì²«ë²ˆì§¸ ì¤„ì„ ì½ì–´ ì¸ì½”ë”©ì„ í™•ì¸í•œ ë’¤,
-    ì¸ì½”ë”©ì— ë§ê²Œ íŒŒì¼ì„ ì½ì–´ ë¦¬ìŠ¤íŠ¸ë¡œ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜
+    ?ŒŒ?¼?˜ ì²«ë²ˆì§? ì¤„ì„ ?½?–´ ?¸ì½”ë”©?„ ?™•?¸?•œ ?’¤,
+    ?¸ì½”ë”©?— ë§ê²Œ ?ŒŒ?¼?„ ?½?–´ ë¦¬ìŠ¤?Š¸ë¡? ë°˜í™˜?•˜?Š” ?•¨?ˆ˜
     Args:
-        path (string): íŒŒì¼ ê²½ë¡œ
+        path (string): ?ŒŒ?¼ ê²½ë¡œ
     Returns:
-        list of string: ë¼ì¸(\n)ë‹¨ìœ„ë¡œ ë¶„ë¦¬ëœ ë¬¸ìì—´
+        list of string: ?¼?¸(\n)?‹¨?œ„ë¡? ë¶„ë¦¬?œ ë¬¸ì?—´
     Examples:
         >>> list_str = read_file('./input.txt')
     """
-    # encoding í™•ì¸
+    # encoding ?™•?¸
     enc = 'utf-8'
     with open(path, 'rb') as f:
         tmp = f.readline()
         enc = chardet.detect(tmp)['encoding']
 
-    # file ê°ì²´ ìƒì„±
+    # file ê°ì²´ ?ƒ?„±
     list_str = list()
     with open(file=path, mode='r', encoding=enc) as f:
         for line in f:
-            list_str.append(line.strip())   # ê³µë°±(\n) ì œê±°í•˜ì—¬ ë¦¬ìŠ¤íŠ¸ì— ì¶”ê°€
+            list_str.append(line.strip())   # ê³µë°±(\n) ? œê±°í•˜?—¬ ë¦¬ìŠ¤?Š¸?— ì¶”ê??
     del list_str[0]
 
     return list_str
 
 
 if __name__ == '__main__':
-    # ê²½ë¡œì˜ íŒŒì¼/í´ë” ëª©ë¡ ì¶œë ¥
+    # ê²½ë¡œ?˜ ?ŒŒ?¼/?´?” ëª©ë¡ ì¶œë ¥
     print_listdir('./')
     
-    # íŒŒì¼ ì—´ê¸°
+    # ?ŒŒ?¼ ?—´ê¸?
     strs = read_file("./input/free_parking_spot_seoul.csv")
 
     # ì¶œë ¥

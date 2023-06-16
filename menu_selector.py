@@ -1,4 +1,11 @@
+import file_manager
+import parking_spot_manager
+
+
 def start_process(path):
+    string_list = file_manager.read_file(path) #파일 읽기
+    parking_list = parking_spot_manager.str_list_to_class_list(string_list) #객체 리스트 변수 얻기
+
     while True:
         print("---menu---")
         print("[1] print")
@@ -7,8 +14,8 @@ def start_process(path):
         print("[4] exit")
         select = int(input('type:'))
         if select == 1:
-            print("not implemented yet")
-            # fill this block
+            parking_spot_manager.print_spots(parking_list) #정보 출력
+
         elif select == 2:
             print("---filter by---")
             print("[1] name")
@@ -52,7 +59,7 @@ def start_process(path):
                 # fill this block
             else: print("invalid input")
         elif select == 4:
-            print("not implemented yet")
-            # fill this block
+            print('Exit') #종료
+            break
         else:
             print("invalid input")
